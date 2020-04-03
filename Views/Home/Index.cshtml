@@ -1,5 +1,19 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
     ViewData["Title"] = "Home Page";
+
+    // Cast the current user to a claims identity.
+    var identity = User.Identity as ClaimsIdentity;
 }
 
-<div class="message">Suscessfully signed in!</div>
+<h1>Suscessfully signed in!</h1>
+
+<!-- Loop through al the information of the user. -->
+<div class="information-title">Information about user: </div>
+<div class="information-container">
+    @foreach (var claim in identity.Claims)
+    {
+        <span>@claim.Type: @claim.Value</span>
+    }
+</div>
+

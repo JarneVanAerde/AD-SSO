@@ -3,9 +3,9 @@
 @if (User.Identity.IsAuthenticated)
 {
     var identity = User.Identity as ClaimsIdentity;
-    string preferred_username = identity.Claims.FirstOrDefault(c => c.Type == "preferred_username")?.Value;
+    string name  = identity.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
     <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text">Hello @preferred_username!</li>
+        <li class="navbar-text">Hello @name!</li>
         <li><a asp-area="AzureAD" asp-controller="Account" asp-action="SignOut">Sign out</a></li>
     </ul>
 }
