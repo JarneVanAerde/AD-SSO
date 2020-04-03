@@ -2,7 +2,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    var identity = User.Identity as ClaimsIdentity; // Azure AD V2 endpoint specific
+    var identity = User.Identity as ClaimsIdentity;
     string preferred_username = identity.Claims.FirstOrDefault(c => c.Type == "preferred_username")?.Value;
     <ul class="nav navbar-nav navbar-right">
         <li class="navbar-text">Hello @preferred_username!</li>
