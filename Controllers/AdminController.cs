@@ -1,14 +1,20 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AD_SSO.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize]
     public class AdminController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            if (((ClaimsIdentity)User.Identity).HasClaim("role", "Administrator")) {
+                return View();
+            } else
+            {
+                return RedirectToAction("About", "Home");
+            }       
         }
     }
 }

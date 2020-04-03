@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -30,15 +32,22 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
 
                     <!-- Only show this part of the navigation if the currect user is authenticated. -->
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
-                    }
 
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        @if (((ClaimsIdentity)User.Identity).HasClaim("role", "Administrator"))
+                        {
+                            <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
+                        }
+                        else
+                        {
+                            <li class="disabled"><a href="#">Admin [No Admin]</a></li>
+                        }
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
