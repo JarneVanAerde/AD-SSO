@@ -3,4 +3,8 @@
 }
 
 <h1 class="text-danger">Login Error</h1>
-<span>You're are not allowed to access this resource. Login with a different account.</span>
+<span>These are invalid credentials. The user must login with an Info Support Domain.</span>
+
+<div class="btn-wrapper">
+    <a class="btn btn-default" asp-area="AzureAD" asp-controller="Account" asp-action="SignIn">Use different account</a>
+</div>

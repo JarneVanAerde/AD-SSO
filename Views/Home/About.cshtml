@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "About Page";
+}
+
+<h1>Welcome to the single sign on application!</h1>
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div>To access other information, please sign in.</div>
+}
+else
+{
+    <div>Everyone can access this page!</div>
+}

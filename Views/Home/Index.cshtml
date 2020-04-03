@@ -6,14 +6,16 @@
     var identity = User.Identity as ClaimsIdentity;
 }
 
-<h1>Suscessfully signed in!</h1>
+<h1>User information</h1>
 
 <!-- Loop through al the information of the user. -->
-<div class="information-title">Information about user: </div>
-<div class="information-container">
+<table>
     @foreach (var claim in identity.Claims)
     {
-        <span>@claim.Type: @claim.Value</span>
+        <tr>
+            <th>@claim.Type</th>
+            <td>@claim.Value</td>
+        </tr>
     }
-</div>
+</table>
 
