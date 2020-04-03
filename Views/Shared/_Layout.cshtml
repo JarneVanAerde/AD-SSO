@@ -31,10 +31,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                    <!-- Only show home navigation if the user is authenticated. -->
+                    <!-- Only show this part of the navigation if the currect user is authenticated. -->
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
                     }
 
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
